@@ -18,14 +18,14 @@ export const Hello: Command = {
 }; 
 
 export const ElementList: Command = {
-    name: "get elements",
-    description: "Show elements list",
+    name: "get-all-data",
+    description: "Show available data",
     type: "CHAT_INPUT",
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
-            // const res = await publicRoute.getElements(); 
-            // console.log(res);
-            const content = "Hello there!";
+            const res = await publicRoute.getAllTypes(); 
+            console.log(res);
+            // const content = res;
             
             await interaction.followUp({
                 ephemeral: true,
