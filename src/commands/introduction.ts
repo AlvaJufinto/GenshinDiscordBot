@@ -1,6 +1,6 @@
 import { BaseCommandInteraction, Client, MessageEmbed } from "discord.js";
 import { Command } from "../Command";
-import { getAllTypes } from "./../ApiCalls";
+import { getAllTypes } from "../ApiCalls";
 
 const thumbnail: string = "https://cdn.discordapp.com/attachments/889147010807124023/995539145038516324/chonguss.jpg"
 
@@ -30,7 +30,7 @@ export const AllCommand: Command = {
     type: "CHAT_INPUT",
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
-            const data = await getAllTypes() as object; 
+            const data = await getAllTypes() as any; 
             console.log(data instanceof Object);
             console.log(data instanceof Array);
             console.log(typeof data);
