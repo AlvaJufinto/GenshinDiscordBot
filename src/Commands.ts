@@ -1,4 +1,4 @@
 import { Command } from "./Command";
-import { Hello, ElementList } from "./commands/Hello";
+import { Hello, AllCommand } from "./commands/Hello";
 
-export const Commands: Command[] = [Hello, ElementList];
+export const Commands: Command[] = [Hello, AllCommand];
