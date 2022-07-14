@@ -31,10 +31,7 @@ export const AllCommand: Command = {
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
             const data = await getAllTypes() as any; 
-            console.log(data instanceof Object);
-            console.log(data instanceof Array);
-            console.log(typeof data);
-            
+            console.log(data);
             
             const embedMessage = new MessageEmbed()
                 .setColor('#0099ff')
@@ -46,24 +43,22 @@ export const AllCommand: Command = {
                 .addFields( 
                     {
                         name: '_ _', 
-                        value: '_ ',
-                        inline: true
+                        value: "_ _",
                     },
-                    data?.map((r: string, i: number): object => {
+                    data?.types?.map((r: string, i: number): object => {
                         return {
                             name: `${i + 1}. ${r}`,
-                            value: `/${r}`
+                            value: "`/" +r + "`"
                         }
                     }),
                     {
                         name: '_ _', 
-                        value: '_ ',
+                        value: '_ _',
                         inline: true
                     },
                 )
-                // .addField('Inline field title', 'Some value here', true)
-                // .setImage('https://i.imgur.com/AfFp7pu.png')
-                // .setTimestamp()
+                .addField("Add GenshinBot to your server!", "[Click here](https://discordapp.com/oauth2/authorize?client_id=439778986050977792&scope=bot&permissions=8)")
+                .addField("API Source", "[Click here](https://genshin.dev/)")
                 .setFooter(footer as any);
 
             await interaction.followUp({
