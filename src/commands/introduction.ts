@@ -24,18 +24,18 @@ export const AllCommands: Command = {
     type: "CHAT_INPUT",
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
-            type responseType = {
-                types?: string[]
-            }
-            const data: responseType = await getAllTypes(); 
+            const data: { types?: string[] } = await getAllTypes(); 
         
             const embedMessage: object = embedFunction(
+                undefined,
                 data?.types?.map((r: string, i: number): object => {
                     return {
                         name: `${i + 1}. ${r}`,
                         value: "`/" +r + "`"
                     }
                 }),
+                true,
+                "What information this bot provides"
             );
 
             await interaction.followUp({

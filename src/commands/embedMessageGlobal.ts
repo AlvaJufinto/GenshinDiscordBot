@@ -7,14 +7,14 @@ export const footer: object = {
     iconURL: thumbnail
 }
 
-export const embedFunction = (data: any): object => {
+export const embedFunction = (embedColor: any = "#0099ff", data: any, hasThumbnail: boolean, description: string): object => {
     const embedMessage = new MessageEmbed()
-    .setColor('#0099ff')
+    .setColor(embedColor)
     .setTitle('Choose one...')
     // .setURL('https://discord.js.org/')
     // .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
-    .setDescription('What information this bot provides')
-    .setThumbnail(thumbnail)
+    .setDescription(description)
+    .setThumbnail(hasThumbnail ? thumbnail : "")
     .addFields( 
         {
             name: '_ _', 
@@ -27,8 +27,8 @@ export const embedFunction = (data: any): object => {
             inline: true
         },
     )
-    .addField("Add GenshinBot to your server!", "[Click here](https://discordapp.com/oauth2/authorize?client_id=439778986050977792&scope=bot&permissions=8)")
-    .addField("API Source", "[Click here](https://genshin.dev/)")
+    .addField("Add GenshinBot to your server!", "[Invite this bot](https://discordapp.com/oauth2/authorize?client_id=439778986050977792&scope=bot&permissions=8)")
+    .addField("API Source", "[Genshin Dev](https://genshin.dev/)")
     .setFooter(footer as any);
 
     return embedMessage;
