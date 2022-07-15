@@ -25,9 +25,8 @@ export const AllCommands: Command = {
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
             const data: { types?: string[] } = await getAllTypes(); 
-        
+            
             const embedMessage: object = embedFunction(
-                undefined,
                 data?.types?.map((r: string, i: number): object => {
                     return {
                         name: `${i + 1}. ${r}`,
@@ -35,7 +34,7 @@ export const AllCommands: Command = {
                     }
                 }),
                 true,
-                "What information this bot provides"
+                "What information this bot provides",
             );
 
             await interaction.followUp({
