@@ -15,5 +15,3 @@ interactionCreate(client);
 
 client.login(token)
 
-// console.log(client);
-

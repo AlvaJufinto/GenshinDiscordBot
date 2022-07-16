@@ -10,11 +10,11 @@ export const getAllTypes = async (): Promise<object> => {
     }
 }
 
-// TODO: make get item stuff
-export const getTypeItems = async (type: string): Promise<object> => {
+// TODO: make get items based on type
+export const getItems = async (type: string): Promise<object> => {
     try {
         let res = await fetch(`${baseUrl}/${type}`);
-        return await res.json(); 
+        return res.json(); 
     } catch (err) {
         return err as object;
     }

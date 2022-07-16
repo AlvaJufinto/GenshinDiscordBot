@@ -1,4 +1,4 @@
-import { BaseCommandInteraction, Client } from "discord.js";
+import { BaseCommandInteraction, Client, } from "discord.js";
 import { embedFunction } from "./embedMessageGlobal";
 import { Command } from "../Command";
 import { getAllTypes } from "../ApiCalls";
