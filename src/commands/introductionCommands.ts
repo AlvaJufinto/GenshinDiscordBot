@@ -6,7 +6,7 @@ import { getAllTypes } from "../ApiCalls";
 // Make Hello embed command
 export const HelloCommand: Command = {
     name: "hello",
-    description: "Returns a greeting",
+    description: "Returns a greeting and other information",
     type: "CHAT_INPUT",
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
@@ -16,17 +16,11 @@ export const HelloCommand: Command = {
                 "Hello there!",
                 true,
                 "I made this bot to help myself learn Typescript \n if you're interested you can check my source code, [Click here](https://github.com/AlvaJufinto/GenshinDiscordBot)",
-                [
-                    {
-                        name: "Simple Guide",
-                        value: "If you want to know more about how to use this bot just type : \n `/get-all-information` ",
-                    },
-
-                ]
+                {
+                    name: "Simple Guide",
+                    value: "A command to help you understand **the whole thing** : \n `/help` \n \n To get **items based on type** : \n `/type-name` \n ex. `/artifacts` \n \n Get spesific info about **an item** \n `/type-name item-name` \n ex. `/artifacts lavawalker` ",
+                },
             );
-            
-            // console.log(embedMessage);
-            
 
             await interaction.followUp({
                 ephemeral: true,
@@ -35,9 +29,9 @@ export const HelloCommand: Command = {
     }
 }; 
 
-export const AllCommands: Command = {
-    name: "get-all-information",
-    description: "Show available information about genshin",
+export const HelpCommands: Command = {
+    name: "help",
+    description: "Show available information about GenshinBot",
     type: "CHAT_INPUT",
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
