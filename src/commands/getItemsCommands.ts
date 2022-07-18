@@ -3,7 +3,7 @@ import { embedFunction } from "./embedMessageGlobal";
 import { Command } from "../Command";
 import { getItems } from "../ApiCalls";
 
-// Make Hello embed command
+// Make embed command
 export const getArtifacts: Command = {
     name: "artifacts",
     description: "Returns a greeting and other information",
@@ -11,7 +11,6 @@ export const getArtifacts: Command = {
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
             const data = await getItems('artifacts') as string[]; 
-            const pageNumber = [1, 2, 3];
             const dataPerPage = 10;
             
             const embedMessageOne: object = embedFunction(
