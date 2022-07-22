@@ -6,7 +6,7 @@ import { getItems } from "../ApiCalls";
 // Make embed command
 export const getArtifacts: Command = {
     name: "artifacts",
-    description: "Returns a greeting and other information",
+    description: "Returns artifacts information",
     type: "CHAT_INPUT",
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
@@ -53,3 +53,32 @@ export const getArtifacts: Command = {
         });
     }
 }; 
+
+// getElements
+export const getElements: Command = {
+    name: "elements",
+    description: "Returns elements",
+    type: "CHAT_INPUT",
+    run:
+        async (client: Client, interaction: BaseCommandInteraction) => {
+            const data = await getItems('elements') as string[]; 
+
+            console.log(data);
+            
+
+            const embedMessage: object = embedFunction(
+                "Hello there!",
+                true,
+                "I made this bot to help myself learn Typescript \n if you're interested you can check my source code, [Click here](https://github.com/AlvaJufinto/GenshinDiscordBot)",
+                {
+                    name: "Simple Guide",
+                    value: "A command to help you understand **the whole thing** : \n `/help` \n \n To get **items based on type** : \n `/type-name` \n ex. `/artifacts` \n \n Get spesific info about **an item** \n `/type-name item-name` \n ex. `/artifacts lavawalker` ",
+                },
+            );
+
+            await interaction.followUp({
+                ephemeral: true,
+                embeds: [embedMessage]
+            });
+    } 
+}
