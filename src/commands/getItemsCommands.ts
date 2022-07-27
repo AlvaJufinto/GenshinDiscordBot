@@ -61,7 +61,7 @@ export const getElements: Command = {
     type: "CHAT_INPUT",
     run:
         async (client: Client, interaction: BaseCommandInteraction) => {
-            const data = await getItems('elements') as string[]; 
+            const data: { types?: string[] } = await getItems('elements'); 
 
             console.log(data);
             
@@ -69,11 +69,13 @@ export const getElements: Command = {
             const embedMessage: object = embedFunction(
                 "Hello there!",
                 true,
-                "I made this bot to help myself learn Typescript \n if you're interested you can check my source code, [Click here](https://github.com/AlvaJufinto/GenshinDiscordBot)",
-                {
-                    name: "Simple Guide",
-                    value: "A command to help you understand **the whole thing** : \n `/help` \n \n To get **items based on type** : \n `/type-name` \n ex. `/artifacts` \n \n Get spesific info about **an item** \n `/type-name item-name` \n ex. `/artifacts lavawalker` ",
-                },
+                "To get spesific info about an item `/type-name item-name` ",
+                data?.types?.map((r: string, i: number): object => {
+                    return {
+                        name: `${i + 1}. ${r}`,
+                        value: "`/" + r + "`"
+                    }
+                }),
             );
 
             await interaction.followUp({
