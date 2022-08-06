@@ -59,18 +59,25 @@ export const getElements: Command = {
     name: "elements",
     description: "Returns elements",
     type: "CHAT_INPUT",
+    // options: [
+    //     {
+    //         type: "SUB_COMMAND",
+    //         name: "bar",
+    //         description: "some description"
+    //     }
+    // ],
     run:
         async (client: Client, interaction: BaseCommandInteraction) => {
-            const data: { types?: string[] } = await getItems('elements'); 
+            const data = await getItems('elements') as string[]; 
 
             console.log(data);
             
 
             const embedMessage: object = embedFunction(
-                "Hello there!",
-                true,
-                "To get spesific info about an item `/type-name item-name` ",
-                data?.types?.map((r: string, i: number): object => {
+                "Element List",
+                false,
+                "To get spesific info about an item `/element-name item-name` ",
+                data?.map((r: string, i: number): object => {
                     return {
                         name: `${i + 1}. ${r}`,
                         value: "`/" + r + "`"

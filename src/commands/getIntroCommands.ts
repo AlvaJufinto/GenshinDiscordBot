@@ -35,7 +35,7 @@ export const HelpCommands: Command = {
     type: "CHAT_INPUT",
     run: 
         async (client: Client, interaction: BaseCommandInteraction) => {
-            const data: { types?: string[] } = await getAllTypes(); 
+            const data: { types?: string[] } = await getAllTypes<object>(); 
             
             const embedMessage: object = embedFunction(
                 "Choose one...",
